@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../models/user.model';
@@ -11,9 +11,9 @@ import { User } from '../../../models/user.model';
 })
 export class UserFormComponent implements OnInit {
 
-  public userForm: FormGroup;
+  public userForm: UntypedFormGroup;
 
-  constructor(public formBuilder: FormBuilder, public userService: UserService) {
+  constructor(public formBuilder: UntypedFormBuilder, public userService: UserService) {
     this.userForm = this.formBuilder.group({
       firstName: [''],
       lastName: ['']

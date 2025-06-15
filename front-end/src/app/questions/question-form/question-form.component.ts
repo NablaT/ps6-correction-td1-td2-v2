@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, UntypedFormArray, Validators } from '@angular/forms';
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from 'src/models/quiz.model';
 import { Question } from 'src/models/question.model';
@@ -14,9 +14,9 @@ export class QuestionFormComponent implements OnInit {
   @Input()
   quiz: Quiz;
 
-  public questionForm: FormGroup;
+  public questionForm: UntypedFormGroup;
 
-  constructor(public formBuilder: FormBuilder, private quizService: QuizService) {
+  constructor(public formBuilder: UntypedFormBuilder, private quizService: QuizService) {
     // Form creation
     this.initializeQuestionForm();
   }
@@ -31,11 +31,11 @@ export class QuestionFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get answers(): FormArray {
-    return this.questionForm.get('answers') as FormArray;
+  get answers(): UntypedFormArray {
+    return this.questionForm.get('answers') as UntypedFormArray;
   }
 
-  private createAnswer(): FormGroup {
+  private createAnswer(): UntypedFormGroup {
     return this.formBuilder.group({
       value: '',
       isCorrect: false,
